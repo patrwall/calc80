@@ -1,5 +1,5 @@
 /* Calc80 by Patrik Wallander */
-/* License GPL2.  See LICENCE for details of GPL2 License */
+/* License GPL2.  See COPYING for details of GPL2 License */
 #include <cmath>
 #include <stack>
 #include "Operation.h"

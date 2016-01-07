@@ -1,0 +1,21 @@
+Calc80 version 0.01 by Patrik Wallander
+
+The purpose of this calculator program is to emulate a simple scientific
+calculator. Such as I was referred to use during examinations at the
+university. In time, I became accustomed to the order in which operations
+are calculated and now prefer it instead of a more advanced calculator.
+The program may be distributed under the GPL2 license. I give no assurance 
+that this program will not harm your equipment or cause any data loss.
+
+To do, future milestones:
+Version 0.02 Fractions, rectangular to polar conversion, engineering mode
+Version 0:03 Binary, octal, and hexadecimal modes
+Version 00:04 Statistics
+
+Installation:
+It needs FLTK 1.3 library to compile. Simply run "make" to build the program.
+To install move the file calc80 to /usr/local/bin/.
+
+Patrik Wallander 2015-01-07
+
+ 

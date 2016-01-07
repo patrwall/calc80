@@ -1,0 +1,529 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0303 
+header_name {.h} 
+code_name {.cpp}
+decl {\#include <cstdlib>} {private local
+} 
+
+decl {\#include <string>} {private global
+} 
+
+decl {\#include <FL/Fl.H>} {private local
+} 
+
+decl {\#include "Definitions.h"} {private global
+} 
+
+decl {\#include "Calculator.h"} {private global
+} 
+
+decl {Calculator calc} {private local
+} 
+
+decl {bool hyp = false;} {private local
+} 
+
+Function {} {open
+} {
+  Fl_Window m_win {
+    label Calc80 open
+    xywh {413 444 425 285} type Double color 23 labelfont 2 labelsize 11 size_range {425 285 0 0} visible
+  } {
+    Fl_Box {} {
+      xywh {185 26 235 56} box RFLAT_BOX color 231
+    }
+    Fl_Box bx_brackets {
+      xywh {365 55 50 20} box RFLAT_BOX color 6 labelfont 4 labelsize 12
+      code0 {bx_brackets->align(Fl_Align(FL_ALIGN_INSIDE));}
+    }
+    Fl_Box bx_mem {
+      xywh {330 56 35 19} box RFLAT_BOX color 6 labelfont 4 labelsize 12
+      code0 {bx_mem->align(Fl_Align(FL_ALIGN_INSIDE));}
+    }
+    Fl_Button {} {
+      label 0
+      user_data 0
+      callback cb_all
+      xywh {245 245 55 35} box FLAT_BOX down_box FLAT_BOX color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label {.}
+      user_data 10
+      callback cb_all
+      xywh {305 245 55 35} box FLAT_BOX down_box FLAT_BOX shortcut 0x2c color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label hyp
+      user_data 1025
+      callback cb_all
+      xywh {5 254 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x7a color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label 1
+      user_data 1
+      callback cb_all
+      xywh {185 205 55 35} box FLAT_BOX down_box FLAT_BOX shortcut 0x31 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label 2
+      user_data 2
+      callback cb_all
+      xywh {245 205 55 35} box FLAT_BOX down_box FLAT_BOX shortcut 0x32 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label 3
+      user_data 3
+      callback cb_all
+      xywh {305 205 55 35} box FLAT_BOX down_box FLAT_BOX shortcut 0x33 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label {+}
+      user_data 67
+      callback cb_all
+      xywh {365 205 55 35} box FLAT_BOX down_box FLAT_BOX shortcut 0x2b color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label 4
+      user_data 4
+      callback cb_all
+      xywh {185 165 55 35} box FLAT_BOX down_box FLAT_BOX shortcut 0x34 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label 5
+      user_data 5
+      callback cb_all
+      xywh {245 165 55 35} box FLAT_BOX down_box FLAT_BOX shortcut 0x35 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label 6
+      user_data 6
+      callback cb_all
+      xywh {305 165 55 35} box FLAT_BOX down_box FLAT_BOX shortcut 0x36 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label {−}
+      user_data 68
+      callback cb_all
+      xywh {365 165 55 35} box FLAT_BOX down_box FLAT_BOX shortcut 0x2d color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label 7
+      user_data 7
+      callback cb_all
+      xywh {185 125 55 35} box FLAT_BOX down_box FLAT_BOX shortcut 0x37 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label 8
+      user_data 8
+      callback cb_all
+      xywh {245 125 55 35} box FLAT_BOX down_box FLAT_BOX shortcut 0x38 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label 9
+      user_data 9
+      callback cb_all
+      xywh {305 125 55 35} box FLAT_BOX down_box FLAT_BOX shortcut 0x39 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label {×}
+      user_data 80
+      callback cb_all
+      xywh {365 125 55 35} box FLAT_BOX down_box FLAT_BOX shortcut 0x2a color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label {%}
+      user_data 75
+      callback cb_all
+      xywh {185 245 55 35} box FLAT_BOX down_box FLAT_BOX shortcut 0x25 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label {(}
+      user_data 65
+      callback cb_all
+      xywh {245 85 55 35} box FLAT_BOX down_box FLAT_BOX shortcut 0x28 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label {)}
+      user_data 66
+      callback cb_all
+      xywh {305 85 55 35} box FLAT_BOX down_box FLAT_BOX shortcut 0x29 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label {÷}
+      user_data 81
+      callback cb_all
+      xywh {365 85 55 35} box FLAT_BOX down_box FLAT_BOX shortcut 0x2f color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label {⌦}
+      user_data 13
+      callback cb_all
+      xywh {185 85 55 35} box FLAT_BOX down_box FLAT_BOX shortcut 0xff08 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label {π}
+      user_data 19
+      callback cb_all
+      xywh {50 190 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x77 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label ln
+      user_data 132
+      callback cb_all
+      xywh {95 222 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x64 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label {yˣ}
+      user_data 96
+      callback cb_all
+      xywh {5 190 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x71 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label log
+      user_data 131
+      callback cb_all
+      xywh {5 222 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x61 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label {10ˣ}
+      user_data 112
+      callback cb_all
+      xywh {50 222 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x73 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label EXP
+      user_data 11
+      callback cb_all
+      xywh {125 155 55 30} box FLAT_BOX down_box FLAT_BOX shortcut 0x6d color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label {eˣ}
+      user_data 113
+      callback cb_all
+      xywh {140 222 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x66 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label {√}
+      user_data 116
+      callback cb_all
+      xywh {5 155 55 30} box FLAT_BOX down_box FLAT_BOX shortcut 0x62 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label {+/−}
+      user_data 12
+      callback cb_all
+      xywh {65 155 55 30} box FLAT_BOX down_box FLAT_BOX shortcut 0x6e color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label {x²}
+      user_data 115
+      callback cb_all
+      xywh {95 190 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x65 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label C
+      user_data 14
+      callback cb_all
+      xywh {95 55 85 25} box FLAT_BOX down_box FLAT_BOX shortcut 0x6c color 8 selection_color 17 labelsize 15 labelcolor 7
+    }
+    Fl_Button {} {
+      label MR
+      user_data 17
+      callback cb_all
+      xywh {65 25 55 25} box FLAT_BOX down_box FLAT_BOX shortcut 0x6f color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label MS
+      user_data 16
+      callback cb_all
+      xywh {5 25 55 25} box FLAT_BOX down_box FLAT_BOX shortcut 0x69 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label {M+}
+      user_data 18
+      callback cb_all
+      xywh {125 25 55 25} box FLAT_BOX down_box FLAT_BOX shortcut 0x70 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button b_ac {
+      label AC
+      user_data 15
+      callback cb_all
+      xywh {5 55 85 25} box FLAT_BOX down_box FLAT_BOX shortcut 0x6b color 8 selection_color 17 labelsize 15 labelcolor 7
+    }
+    Fl_Button {} {
+      label {sin⁻¹}
+      user_data 122
+      callback cb_all
+      xywh {5 120 55 30} box FLAT_BOX down_box FLAT_BOX shortcut 0x67 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label {cos⁻¹}
+      user_data 123
+      callback cb_all
+      xywh {65 120 55 30} box FLAT_BOX down_box FLAT_BOX shortcut 0x68 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label {tan⁻¹}
+      user_data 124
+      callback cb_all
+      xywh {125 120 55 30} box FLAT_BOX down_box FLAT_BOX shortcut 0x6a color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label sin
+      user_data 119
+      callback cb_all
+      xywh {5 85 55 30} box FLAT_BOX down_box FLAT_BOX shortcut 0x74 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label cos
+      user_data 120
+      callback cb_all
+      xywh {65 85 55 30} box FLAT_BOX down_box FLAT_BOX shortcut 0x79 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label {=}
+      user_data 64
+      callback cb_all
+      xywh {365 245 55 35} box FLAT_BOX down_box FLAT_BOX shortcut 0xff8d color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label tan
+      user_data 121
+      callback cb_all
+      xywh {125 85 55 30} box FLAT_BOX down_box FLAT_BOX shortcut 0x75 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label {x!}
+      user_data 118
+      callback cb_all
+      xywh {50 254 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x78 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label {y¹⁄ˣ}
+      user_data 97
+      callback cb_all
+      xywh {95 254 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x63 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label {1/x}
+      user_data 117
+      callback cb_all
+      xywh {140 190 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x72 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Button {} {
+      label {∛}
+      user_data 133
+      callback cb_all
+      xywh {140 254 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x76 color 7 selection_color 17 labelsize 15
+    }
+    Fl_Menu_Bar {} {open
+      xywh {0 0 425 20} box FLAT_BOX down_box FLAT_BOX color 7
+    } {
+      Submenu {} {
+        label Archive open
+        xywh {0 0 70 20}
+      } {
+        MenuItem {} {
+          label Quit
+          callback {cb_quit()}
+          xywh {5 5 36 20}
+        }
+      }
+      Submenu {} {
+        label Edit open
+        xywh {0 0 70 20}
+      } {
+        MenuItem {} {
+          label Copy
+          callback {cb_copy()}
+          xywh {5 5 36 20}
+        }
+        MenuItem {} {
+          label Paste
+          callback {cb_paste()} selected
+          xywh {5 5 36 20}
+        }
+      }
+      Submenu {} {
+        label Mode open
+        xywh {5 5 70 20}
+      } {
+        Submenu {} {
+          label Angle open
+          xywh {10 10 70 20}
+        } {
+          MenuItem {} {
+            label Degrees
+            user_data 32
+            callback cb_all
+            xywh {10 10 36 20}
+          }
+          MenuItem {} {
+            label Radian
+            user_data 33
+            callback cb_all
+            xywh {10 10 36 20}
+          }
+          MenuItem {} {
+            label Grad
+            user_data 34
+            callback cb_all
+            xywh {10 10 36 20}
+          }
+        }
+        Submenu {} {
+          label {Floating Point} open
+          xywh {15 15 70 20}
+        } {
+          MenuItem {} {
+            label Normal
+            user_data 35
+            callback cb_all
+            xywh {15 15 36 20}
+          }
+          MenuItem {} {
+            label Fixed
+            user_data 36
+            callback cb_all
+            xywh {15 15 36 20}
+          }
+          MenuItem {} {
+            label Scientific
+            user_data 37
+            callback cb_all
+            xywh {15 15 36 20}
+          }
+        }
+      }
+      Submenu {} {
+        label Help open
+        xywh {0 0 70 20}
+      } {
+        MenuItem {} {
+          label About
+          callback {cb_open_about(m_win->x(), m_win->y())}
+          xywh {5 5 36 20}
+        }
+      }
+    }
+    Fl_Input i_varea {
+      xywh {185 25 235 24} box RFLAT_BOX color 6 labelfont 4 labelsize 16
+      code0 {i_varea->textfont(FL_COURIER);}
+      code1 {i_varea->textsize(18);}
+    }
+    Fl_Box bx_fmod {
+      xywh {286 56 35 19} box RFLAT_BOX color 6 labelfont 4 labelsize 12
+      code0 {bx_fmod->align(Fl_Align(FL_ALIGN_INSIDE));}
+    }
+    Fl_Box bx_tmod {
+      label DEG
+      xywh {247 56 35 19} box RFLAT_BOX color 6 labelfont 4 labelsize 12
+      code0 {bx_tmod->align(Fl_Align(FL_ALIGN_INSIDE));}
+    }
+    Fl_Box bx_hyp {
+      xywh {212 56 35 19} box RFLAT_BOX color 6 labelfont 4 labelsize 12
+      code0 {bx_hyp->align(Fl_Align(FL_ALIGN_INSIDE));}
+    }
+  }
+  code {float lw = (float)i_varea->w();
+float fs = (float)i_varea->textsize();
+int nrofdigits =  floor(1.6 * lw/fs);
+i_varea->value(calc.width(nrofdigits).c_str());} {}
+} 
+
+Function {cb_all(Fl_Widget* o, void* data)} {open
+} {
+  code {unsigned long long temp = reinterpret_cast<long long> (data);
+int cmd = (int)temp;
+
+
+if(cmd < 1024) {
+	if(hyp && cmd > 118 && cmd < 125)
+		cmd += 6;
+	hyp = false;
+	bx_hyp->copy_label("");		
+	i_varea->value(calc.cmd(cmd, i_varea->value()).c_str());
+	bx_brackets->copy_label(calc.nr_of_brackets().c_str());
+	bx_mem->copy_label(calc.mem_ind().c_str());
+	bx_tmod->copy_label(calc.tmod_ind().c_str());
+	bx_fmod->copy_label(calc.fmod_ind().c_str());
+	}
+else {
+	if(hyp) {
+		hyp = false;
+		bx_hyp->copy_label("");
+	}
+	else {
+		hyp = true;
+		bx_hyp->copy_label("HYP");
+	}
+}} {}
+} 
+
+Function {cb_close_about()} {open return_type void
+} {
+  code {delete a_diag;} {}
+} 
+
+Function {cb_open_about(int x, int y)} {open return_type void
+} {
+  Fl_Window a_diag {
+    label About open
+    xywh {1066 848 210 165} type Double color 23 hide
+    code0 {a_diag->show();}
+    code1 {a_diag->position(x,y);}
+  } {
+    Fl_Group a_mess {
+      label {Calc 80} open
+      xywh {5 10 200 45} box OFLAT_BOX color 6 labelsize 21 align 0
+    } {}
+    Fl_Group {} {
+      label {Version 0.01} open
+      xywh {5 70 205 25} align 0
+    } {}
+    Fl_Group {} {
+      label {©2015, Patrik Wallander} open
+      xywh {10 95 200 25} align 0
+    } {}
+    Fl_Button {} {
+      label Close
+      callback cb_close_about
+      xywh {70 135 70 20} box RFLAT_BOX color 7
+    }
+  }
+} 
+
+Function {cb_quit()} {} {
+  code {delete m_win;} {}
+} 
+
+Function {cb_copy()} {open
+} {
+  code {char *s, *p;
+  char *l = (char*)i_varea->value();
+  int z = strlen(l);
+
+  //remove space character
+  s = new char[z + 1];
+  p = &s[0];
+  
+  for(int n = 0; n < z; n++) {
+    if(l[n] != ' ') {
+      *p = l[n];
+      p++;
+    }
+  }
+
+  *p = '\\0';
+   
+  Fl::copy(s, z, 1);
+  delete s;} {}
+} 
+
+Function {cb_paste()} {open
+} {
+  code {Fl_Widget *p = i_varea;
+Fl::paste(*p, 1);
+string s = string(i_varea->value());
+i_varea->value(calc.set_content(s).c_str());} {}
+} 
