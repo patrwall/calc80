@@ -8,14 +8,15 @@ The program may be distributed under the GPL2 license. I give no assurance
 that this program will not harm your equipment or cause any data loss.
 
 To do, future milestones:
-Version 0.02 Fractions, rectangular to polar conversion, engineering mode
-Version 0:03 Binary, octal, and hexadecimal modes
-Version 00:04 Statistics
+Version 0.1 Clean up code, Windows version, icon, install and configure script, fix eventual bugs, make menu reachable from keyboard
+Version 0.2 Fractions, rectangular to polar conversion, engineering mode
+Version 0.3 Binary, octal, and hexadecimal modes
+Version 0.4 Statistics
 
 Installation:
 It needs FLTK 1.3 library to compile. Simply run "make" to build the program.
 To install move the file calc80 to /usr/local/bin/.
 
-Patrik Wallander 2015-01-07
+Patrik Wallander 2015-01-10
 
  
