@@ -372,8 +372,7 @@ menu_bar->color(FL_BACKGROUND2_COLOR);
 float lw = (float)i_varea->w();
 float fs = (float)i_varea->textsize();
 int nrofdigits =  floor(1.6 * lw/fs);
-i_varea->value(calc.width(nrofdigits).c_str());} {selected
-  }
+i_varea->value(calc.width(nrofdigits).c_str());} {}
 } 
 
 Function {cb_all(Fl_Widget* o, void* data)} {open
@@ -410,7 +409,7 @@ Function {cb_close_about()} {open return_type void
   code {delete a_diag;} {}
 } 
 
-Function {cb_open_about(int x, int y)} {return_type void
+Function {cb_open_about(int x, int y)} {open return_type void
 } {
   Fl_Window a_diag {
     label About open
@@ -423,7 +422,7 @@ Function {cb_open_about(int x, int y)} {return_type void
       xywh {5 10 200 45} box OFLAT_BOX color 6 labelsize 21 align 0
     } {}
     Fl_Group {} {
-      label {Version 0.01} open
+      label {Version 0.02} open selected
       xywh {5 70 205 25} align 0
     } {}
     Fl_Group {} {

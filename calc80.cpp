@@ -571,7 +571,7 @@ void cb_open_about(int x, int y) {
       a_mess->align(Fl_Align(FL_ALIGN_CENTER));
       a_mess->end();
     } // Fl_Group* a_mess
-    { Fl_Group* o = new Fl_Group(5, 70, 205, 25, "Version 0.01");
+    { Fl_Group* o = new Fl_Group(5, 70, 205, 25, "Version 0.02");
       o->align(Fl_Align(FL_ALIGN_CENTER));
       o->end();
     } // Fl_Group* o
