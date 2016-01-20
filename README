@@ -1,4 +1,4 @@
-Calc80 version 0.01 by Patrik Wallander
+Calc80 version 0.02 by Patrik Wallander
 
 The purpose of this calculator program is to emulate a simple scientific
 calculator. Such as I was referred to use during examinations at the
@@ -17,6 +17,5 @@ Installation:
 It needs FLTK 1.3 library to compile. Simply run "make" to build the program.
 To install move the file calc80 to /usr/local/bin/.
 
-Patrik Wallander 2015-01-10
 
  

@@ -4,10 +4,27 @@
 #include <cstdlib>
 #include <string>
 #include <FL/Fl.H>
-#include "Definitions.h"
-#include "Calculator.h"
-static Calculator calc; 
-static bool hyp = false; 
+Fl_Menu_Item menu_[] = {{"Archive", 0,  0, 0, 64, FL_NORMAL_LABEL, 0, 14, 0},
+{"Quit", 0,  (Fl_Callback*)cb_quit, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
+{0,0,0,0,0,0,0,0,0},{"Edit", 0,  0, 0, 64, FL_NORMAL_LABEL, 0, 14, 0},
+{"Copy", 0,  (Fl_Callback*)cb_copy, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
+{"Paste", 0,  (Fl_Callback*)cb_paste, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
+{0,0,0,0,0,0,0,0,0}, {"Mode", 0,  0, 0, 64, FL_NORMAL_LABEL, 0, 14, 0},
+{"Angle", 0,  0, 0, 64, FL_NORMAL_LABEL, 0, 14, 0},
+{"Degrees", 0,  (Fl_Callback*)cb_all, (void*)(32), 0, FL_NORMAL_LABEL, 0, 14, 0},
+{"Radian", 0,  (Fl_Callback*)cb_all, (void*)(33), 0, FL_NORMAL_LABEL, 0, 14, 0},
+{"Grad", 0,  (Fl_Callback*)cb_all, (void*)(34), 0, FL_NORMAL_LABEL, 0, 14, 0},
+{0,0,0,0,0,0,0,0,0}, {"Floating Point", 0,  0, 0, 64, FL_NORMAL_LABEL, 0, 14, 0},
+{"Normal", 0,  (Fl_Callback*)cb_all, (void*)(35), 0, FL_NORMAL_LABEL, 0, 14, 0},
+{"Fixed", 0,  (Fl_Callback*)cb_all, (void*)(36), 0, FL_NORMAL_LABEL, 0, 14, 0},
+{"Scientific", 0,  (Fl_Callback*)cb_all, (void*)(37), 0, FL_NORMAL_LABEL, 0, 14, 0},
+{0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0},
+{"Help", 0,  0, 0, 64, FL_NORMAL_LABEL, 0, 14, 0},
+{"About", 0,  (Fl_Callback*)cb_open_about, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
+{0,0,0,0,0,0,0,0,0},
+{0,0,0,0,0,0,0,0,0}
+}; 
 
 Fl_Double_Window *m_win=(Fl_Double_Window *)0;
 
@@ -16,48 +33,6 @@ Fl_Box *bx_brackets=(Fl_Box *)0;
 Fl_Box *bx_mem=(Fl_Box *)0;
 
 Fl_Button *b_ac=(Fl_Button *)0;
-
-static void cb_Quit(Fl_Menu_*, void*) {
-  cb_quit();
-}
-
-static void cb_Copy(Fl_Menu_*, void*) {
-  cb_copy();
-}
-
-static void cb_Paste(Fl_Menu_*, void*) {
-  cb_paste();
-}
-
-static void cb_About(Fl_Menu_*, void*) {
-  cb_open_about(m_win->x(), m_win->y());
-}
-
-Fl_Menu_Item menu_[] = {
- {"Archive", 0,  0, 0, 64, FL_NORMAL_LABEL, 0, 14, 0},
- {"Quit", 0,  (Fl_Callback*)cb_Quit, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
- {0,0,0,0,0,0,0,0,0},
- {"Edit", 0,  0, 0, 64, FL_NORMAL_LABEL, 0, 14, 0},
- {"Copy", 0,  (Fl_Callback*)cb_Copy, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
- {"Paste", 0,  (Fl_Callback*)cb_Paste, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
- {0,0,0,0,0,0,0,0,0},
- {"Mode", 0,  0, 0, 64, FL_NORMAL_LABEL, 0, 14, 0},
- {"Angle", 0,  0, 0, 64, FL_NORMAL_LABEL, 0, 14, 0},
- {"Degrees", 0,  (Fl_Callback*)cb_all, (void*)(32), 0, FL_NORMAL_LABEL, 0, 14, 0},
- {"Radian", 0,  (Fl_Callback*)cb_all, (void*)(33), 0, FL_NORMAL_LABEL, 0, 14, 0},
- {"Grad", 0,  (Fl_Callback*)cb_all, (void*)(34), 0, FL_NORMAL_LABEL, 0, 14, 0},
- {0,0,0,0,0,0,0,0,0},
- {"Floating Point", 0,  0, 0, 64, FL_NORMAL_LABEL, 0, 14, 0},
- {"Normal", 0,  (Fl_Callback*)cb_all, (void*)(35), 0, FL_NORMAL_LABEL, 0, 14, 0},
- {"Fixed", 0,  (Fl_Callback*)cb_all, (void*)(36), 0, FL_NORMAL_LABEL, 0, 14, 0},
- {"Scientific", 0,  (Fl_Callback*)cb_all, (void*)(37), 0, FL_NORMAL_LABEL, 0, 14, 0},
- {0,0,0,0,0,0,0,0,0},
- {0,0,0,0,0,0,0,0,0},
- {"Help", 0,  0, 0, 64, FL_NORMAL_LABEL, 0, 14, 0},
- {"About", 0,  (Fl_Callback*)cb_About, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
- {0,0,0,0,0,0,0,0,0},
- {0,0,0,0,0,0,0,0,0}
-};
 
 Fl_Input *i_varea=(Fl_Input *)0;
 
@@ -505,12 +480,6 @@ int main(int argc, char **argv) {
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(133));
     } // Fl_Button* o
-    { Fl_Menu_Bar* o = new Fl_Menu_Bar(0, 0, 425, 20);
-      o->box(FL_FLAT_BOX);
-      o->down_box(FL_FLAT_BOX);
-      o->color(FL_BACKGROUND2_COLOR);
-      o->menu(menu_);
-    } // Fl_Menu_Bar* o
     { i_varea = new Fl_Input(185, 25, 235, 24);
       i_varea->box(FL_RFLAT_BOX);
       i_varea->color((Fl_Color)6);
@@ -540,9 +509,14 @@ int main(int argc, char **argv) {
       bx_hyp->labelsize(12);
       bx_hyp->align(Fl_Align(FL_ALIGN_INSIDE));
     } // Fl_Box* bx_hyp
+    menu_bar = new MyMenuBar(0, 0, 425, 20);
     m_win->size_range(425, 285);
     m_win->end();
   } // Fl_Double_Window* m_win
+  menu_bar->menu(menu_);
+  menu_bar->box(FL_FLAT_BOX);
+  menu_bar->down_box(FL_FLAT_BOX);
+  menu_bar->color(FL_BACKGROUND2_COLOR);
   float lw = (float)i_varea->w();
   float fs = (float)i_varea->textsize();
   int nrofdigits =  floor(1.6 * lw/fs);

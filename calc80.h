@@ -3,6 +3,12 @@
 #ifndef calc80_h
 #define calc80_h
 #include <FL/Fl.H>
+#include "MyMenuBar.h"
+#include "Definitions.h"
+#include "Calculator.h"
+MyMenuBar *menu_bar=(MyMenuBar *)0; 
+Calculator calc; 
+bool hyp = false; 
 #include <FL/Fl_Double_Window.H>
 extern Fl_Double_Window *m_win;
 #include <FL/Fl_Box.H>
@@ -10,13 +16,11 @@ extern Fl_Box *bx_brackets;
 extern Fl_Box *bx_mem;
 #include <FL/Fl_Button.H>
 extern Fl_Button *b_ac;
-#include <FL/Fl_Menu_Bar.H>
 #include <FL/Fl_Input.H>
 extern Fl_Input *i_varea;
 extern Fl_Box *bx_fmod;
 extern Fl_Box *bx_tmod;
 extern Fl_Box *bx_hyp;
-extern Fl_Menu_Item menu_[];
 void cb_all(Fl_Widget* o, void* data);
 void cb_close_about();
 extern Fl_Double_Window *a_diag;
