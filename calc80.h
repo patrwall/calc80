@@ -9,24 +9,26 @@
 MyMenuBar *menu_bar=(MyMenuBar *)0; 
 Calculator calc; 
 bool hyp = false; 
+int missed_events(int event);
 #include <FL/Fl_Double_Window.H>
 extern Fl_Double_Window *m_win;
 #include <FL/Fl_Box.H>
-extern Fl_Box *bx_brackets;
-extern Fl_Box *bx_mem;
 #include <FL/Fl_Button.H>
 extern Fl_Button *b_ac;
+extern Fl_Button *b_equal;
 #include <FL/Fl_Input.H>
 extern Fl_Input *i_varea;
+extern Fl_Box *bx_brackets;
 extern Fl_Box *bx_fmod;
 extern Fl_Box *bx_tmod;
+extern Fl_Box *bx_mem;
 extern Fl_Box *bx_hyp;
 void cb_all(Fl_Widget* o, void* data);
 void cb_close_about();
 extern Fl_Double_Window *a_diag;
 #include <FL/Fl_Group.H>
 extern Fl_Group *a_mess;
-void cb_open_about(int x, int y);
+void cb_open_about();
 void cb_quit();
 void cb_copy();
 void cb_paste();

@@ -6,9 +6,7 @@
 
 class MyMenuBar : public Fl_Menu_Bar {
  public:
- MyMenuBar(int X,int Y,int W,int H,const char*L=0) : Fl_Menu_Bar(X,Y,W,H,L) {
-  }
-  
+ MyMenuBar(int X,int Y,int W,int H,const char*L=0) : Fl_Menu_Bar(X,Y,W,H,L) {};
  private:
   int handle(int event);	
 };

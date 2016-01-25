@@ -4,6 +4,18 @@
 #include <cstdlib>
 #include <string>
 #include <FL/Fl.H>
+
+int missed_events(int event) {
+  if(event == FL_SHORTCUT) {
+      if(*Fl::event_text() == '=') {
+        	cb_all(b_equal, (void*)(64)); 	
+      	return 1;
+      }
+      
+      //printf("jollo%i\n",Fl::event_key());
+  return 0;
+  }
+}
 Fl_Menu_Item menu_[] = {{"Archive", 0,  0, 0, 64, FL_NORMAL_LABEL, 0, 14, 0},
 {"Quit", 0,  (Fl_Callback*)cb_quit, 0, 0, FL_NORMAL_LABEL, 0, 14, 0},
 {0,0,0,0,0,0,0,0,0},{"Edit", 0,  0, 0, 64, FL_NORMAL_LABEL, 0, 14, 0},
@@ -28,214 +40,221 @@ Fl_Menu_Item menu_[] = {{"Archive", 0,  0, 0, 64, FL_NORMAL_LABEL, 0, 14, 0},
 
 Fl_Double_Window *m_win=(Fl_Double_Window *)0;
 
-Fl_Box *bx_brackets=(Fl_Box *)0;
-
-Fl_Box *bx_mem=(Fl_Box *)0;
-
 Fl_Button *b_ac=(Fl_Button *)0;
 
+Fl_Button *b_equal=(Fl_Button *)0;
+
 Fl_Input *i_varea=(Fl_Input *)0;
+
+Fl_Box *bx_brackets=(Fl_Box *)0;
 
 Fl_Box *bx_fmod=(Fl_Box *)0;
 
 Fl_Box *bx_tmod=(Fl_Box *)0;
 
+Fl_Box *bx_mem=(Fl_Box *)0;
+
 Fl_Box *bx_hyp=(Fl_Box *)0;
 
 int main(int argc, char **argv) {
-  { m_win = new Fl_Double_Window(425, 285, "Calc80");
+  { m_win = new Fl_Double_Window(425, 350, "Calc80");
     m_win->color((Fl_Color)23);
     m_win->labelfont(2);
     m_win->labelsize(11);
-    { Fl_Box* o = new Fl_Box(185, 26, 235, 56);
+    { Fl_Box* o = new Fl_Box(5, 25, 415, 60);
       o->box(FL_RFLAT_BOX);
       o->color((Fl_Color)231);
     } // Fl_Box* o
-    { bx_brackets = new Fl_Box(365, 55, 50, 20);
-      bx_brackets->box(FL_RFLAT_BOX);
-      bx_brackets->color((Fl_Color)6);
-      bx_brackets->labelfont(4);
-      bx_brackets->labelsize(12);
-      bx_brackets->align(Fl_Align(FL_ALIGN_INSIDE));
-    } // Fl_Box* bx_brackets
-    { bx_mem = new Fl_Box(330, 56, 35, 19);
-      bx_mem->box(FL_RFLAT_BOX);
-      bx_mem->color((Fl_Color)6);
-      bx_mem->labelfont(4);
-      bx_mem->labelsize(12);
-      bx_mem->align(Fl_Align(FL_ALIGN_INSIDE));
-    } // Fl_Box* bx_mem
-    { Fl_Button* o = new Fl_Button(245, 245, 55, 35, "0");
+    { Fl_Button* o = new Fl_Button(245, 297, 55, 47, "0");
       o->box(FL_FLAT_BOX);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(0));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(305, 245, 55, 35, ".");
+    { Fl_Button* o = new Fl_Button(305, 297, 55, 47, ".");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x2c);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(10));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(5, 254, 40, 26, "hyp");
+    { Fl_Button* o = new Fl_Button(5, 318, 40, 26, "hyp");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x7a);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(1025));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(185, 205, 55, 35, "1");
+    { Fl_Button* o = new Fl_Button(185, 245, 55, 47, "1");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x31);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(1));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(245, 205, 55, 35, "2");
+    { Fl_Button* o = new Fl_Button(245, 245, 55, 47, "2");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x32);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(2));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(305, 205, 55, 35, "3");
+    { Fl_Button* o = new Fl_Button(305, 245, 55, 47, "3");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x33);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(3));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(365, 205, 55, 35, "+");
+    { Fl_Button* o = new Fl_Button(365, 245, 55, 47, "+");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x2b);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(67));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(185, 165, 55, 35, "4");
+    { Fl_Button* o = new Fl_Button(185, 193, 55, 47, "4");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x34);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(4));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(245, 165, 55, 35, "5");
+    { Fl_Button* o = new Fl_Button(245, 193, 55, 47, "5");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x35);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(5));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(305, 165, 55, 35, "6");
+    { Fl_Button* o = new Fl_Button(305, 193, 55, 47, "6");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x36);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(6));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(365, 165, 55, 35, "\342\210\222");
+    { Fl_Button* o = new Fl_Button(365, 193, 55, 47, "\342\210\222");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x2d);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(68));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(185, 125, 55, 35, "7");
+    { Fl_Button* o = new Fl_Button(185, 141, 55, 47, "7");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x37);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(7));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(245, 125, 55, 35, "8");
+    { Fl_Button* o = new Fl_Button(245, 141, 55, 47, "8");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x38);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(8));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(305, 125, 55, 35, "9");
+    { Fl_Button* o = new Fl_Button(305, 141, 55, 47, "9");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x39);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(9));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(365, 125, 55, 35, "\303\227");
+    { Fl_Button* o = new Fl_Button(365, 141, 55, 47, "\303\227");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x2a);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(80));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(185, 245, 55, 35, "%");
+    { Fl_Button* o = new Fl_Button(185, 297, 55, 47, "%");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x25);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(75));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(245, 85, 55, 35, "(");
+    { Fl_Button* o = new Fl_Button(245, 89, 55, 47, "(");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x28);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(65));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(305, 85, 55, 35, ")");
+    { Fl_Button* o = new Fl_Button(305, 89, 55, 47, ")");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x29);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(66));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(365, 85, 55, 35, "\303\267");
+    { Fl_Button* o = new Fl_Button(365, 89, 55, 47, "\303\267");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x2f);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(81));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(185, 85, 55, 35, "\342\214\246");
+    { Fl_Button* o = new Fl_Button(185, 89, 55, 47, "DEL");
       o->box(FL_FLAT_BOX);
       o->shortcut(0xff08);
       o->down_box(FL_FLAT_BOX);
@@ -244,7 +263,7 @@ int main(int argc, char **argv) {
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(13));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(50, 190, 40, 26, "\317\200");
+    { Fl_Button* o = new Fl_Button(50, 254, 40, 26, "\317\200");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x77);
       o->down_box(FL_FLAT_BOX);
@@ -253,61 +272,67 @@ int main(int argc, char **argv) {
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(19));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(95, 222, 40, 26, "ln");
+    { Fl_Button* o = new Fl_Button(95, 286, 40, 26, "ln");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x64);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(132));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(5, 190, 40, 26, "y\313\243");
+    { Fl_Button* o = new Fl_Button(5, 254, 40, 26, "^");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x71);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(96));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(5, 222, 40, 26, "log");
+    { Fl_Button* o = new Fl_Button(5, 286, 40, 26, "log");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x61);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(131));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(50, 222, 40, 26, "10\313\243");
+    { Fl_Button* o = new Fl_Button(50, 286, 40, 26, "10^x");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x73);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(112));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(125, 155, 55, 30, "EXP");
+    { Fl_Button* o = new Fl_Button(125, 219, 55, 30, "EXP");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x6d);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(11));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(140, 222, 40, 26, "e\313\243");
+    { Fl_Button* o = new Fl_Button(140, 286, 40, 26, "e^x");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x66);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(113));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(5, 155, 55, 30, "\342\210\232");
+    { Fl_Button* o = new Fl_Button(5, 219, 55, 30, "\342\210\232");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x62);
       o->down_box(FL_FLAT_BOX);
@@ -316,194 +341,225 @@ int main(int argc, char **argv) {
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(116));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(65, 155, 55, 30, "+/\342\210\222");
+    { Fl_Button* o = new Fl_Button(65, 219, 55, 30, "+/\342\210\222");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x6e);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(12));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(95, 190, 40, 26, "x\302\262");
+    { Fl_Button* o = new Fl_Button(95, 254, 40, 26, "x\302\262");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x65);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(115));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(95, 55, 85, 25, "C");
+    { Fl_Button* o = new Fl_Button(95, 119, 85, 25, "C");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x6c);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_INACTIVE_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->labelcolor(FL_BACKGROUND2_COLOR);
       o->callback((Fl_Callback*)cb_all, (void*)(14));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(65, 25, 55, 25, "MR");
+    { Fl_Button* o = new Fl_Button(65, 89, 55, 25, "MR");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x6f);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(17));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(5, 25, 55, 25, "MS");
+    { Fl_Button* o = new Fl_Button(5, 89, 55, 25, "MS");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x69);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(16));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(125, 25, 55, 25, "M+");
+    { Fl_Button* o = new Fl_Button(125, 89, 55, 25, "M+");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x70);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(18));
     } // Fl_Button* o
-    { b_ac = new Fl_Button(5, 55, 85, 25, "AC");
+    { b_ac = new Fl_Button(5, 119, 85, 25, "AC");
       b_ac->box(FL_FLAT_BOX);
       b_ac->shortcut(0x6b);
       b_ac->down_box(FL_FLAT_BOX);
       b_ac->color(FL_INACTIVE_COLOR);
       b_ac->selection_color((Fl_Color)17);
+      b_ac->labelfont(13);
       b_ac->labelsize(15);
       b_ac->labelcolor(FL_BACKGROUND2_COLOR);
       b_ac->callback((Fl_Callback*)cb_all, (void*)(15));
     } // Fl_Button* b_ac
-    { Fl_Button* o = new Fl_Button(5, 120, 55, 30, "sin\342\201\273\302\271");
+    { Fl_Button* o = new Fl_Button(5, 184, 55, 30, "asin");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x67);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(122));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(65, 120, 55, 30, "cos\342\201\273\302\271");
+    { Fl_Button* o = new Fl_Button(65, 184, 55, 30, "acos");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x68);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(123));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(125, 120, 55, 30, "tan\342\201\273\302\271");
+    { Fl_Button* o = new Fl_Button(125, 184, 55, 30, "atan");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x6a);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(124));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(5, 85, 55, 30, "sin");
+    { Fl_Button* o = new Fl_Button(5, 149, 55, 30, "sin");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x74);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(119));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(65, 85, 55, 30, "cos");
+    { Fl_Button* o = new Fl_Button(65, 149, 55, 30, "cos");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x79);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(120));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(365, 245, 55, 35, "=");
-      o->box(FL_FLAT_BOX);
-      o->shortcut(0xff8d);
-      o->down_box(FL_FLAT_BOX);
-      o->color(FL_BACKGROUND2_COLOR);
-      o->selection_color((Fl_Color)17);
-      o->labelsize(15);
-      o->callback((Fl_Callback*)cb_all, (void*)(64));
-    } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(125, 85, 55, 30, "tan");
+    { b_equal = new Fl_Button(365, 297, 55, 47, "=");
+      b_equal->box(FL_FLAT_BOX);
+      b_equal->shortcut(0xff0d);
+      b_equal->down_box(FL_FLAT_BOX);
+      b_equal->color(FL_BACKGROUND2_COLOR);
+      b_equal->selection_color((Fl_Color)17);
+      b_equal->labelfont(13);
+      b_equal->labelsize(15);
+      b_equal->callback((Fl_Callback*)cb_all, (void*)(64));
+    } // Fl_Button* b_equal
+    { Fl_Button* o = new Fl_Button(125, 149, 55, 30, "tan");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x75);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(121));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(50, 254, 40, 26, "x!");
+    { Fl_Button* o = new Fl_Button(50, 318, 40, 26, "x!");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x78);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(118));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(95, 254, 40, 26, "y\302\271\342\201\204\313\243");
+    { Fl_Button* o = new Fl_Button(95, 318, 40, 26, "y\302\271\342\201\204x");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x63);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(97));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(140, 190, 40, 26, "1/x");
+    { Fl_Button* o = new Fl_Button(140, 254, 40, 26, "1/x");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x72);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(117));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(140, 254, 40, 26, "\342\210\233");
+    { Fl_Button* o = new Fl_Button(140, 318, 40, 26, "\302\263\342\210\232");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x76);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
+      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(133));
     } // Fl_Button* o
-    { i_varea = new Fl_Input(185, 25, 235, 24);
+    { i_varea = new Fl_Input(5, 24, 415, 44);
       i_varea->box(FL_RFLAT_BOX);
       i_varea->color((Fl_Color)6);
       i_varea->labelfont(4);
-      i_varea->labelsize(16);
       i_varea->textfont(FL_COURIER);
-      i_varea->textsize(18);
+      i_varea->textsize(30);
     } // Fl_Input* i_varea
-    { bx_fmod = new Fl_Box(286, 56, 35, 19);
-      bx_fmod->box(FL_RFLAT_BOX);
+    { bx_brackets = new Fl_Box(350, 71, 50, 14);
+      bx_brackets->box(FL_OFLAT_BOX);
+      bx_brackets->color((Fl_Color)6);
+      bx_brackets->labelfont(4);
+      bx_brackets->labelsize(12);
+      bx_brackets->align(Fl_Align(FL_ALIGN_INSIDE));
+    } // Fl_Box* bx_brackets
+    { bx_fmod = new Fl_Box(310, 71, 35, 14);
+      bx_fmod->box(FL_OFLAT_BOX);
       bx_fmod->color((Fl_Color)6);
       bx_fmod->labelfont(4);
       bx_fmod->labelsize(12);
       bx_fmod->align(Fl_Align(FL_ALIGN_INSIDE));
     } // Fl_Box* bx_fmod
-    { bx_tmod = new Fl_Box(247, 56, 35, 19, "DEG");
-      bx_tmod->box(FL_RFLAT_BOX);
+    { bx_tmod = new Fl_Box(230, 71, 35, 14, "DEG");
+      bx_tmod->box(FL_OFLAT_BOX);
       bx_tmod->color((Fl_Color)6);
       bx_tmod->labelfont(4);
       bx_tmod->labelsize(12);
       bx_tmod->align(Fl_Align(FL_ALIGN_INSIDE));
     } // Fl_Box* bx_tmod
-    { bx_hyp = new Fl_Box(212, 56, 35, 19);
-      bx_hyp->box(FL_RFLAT_BOX);
+    { bx_mem = new Fl_Box(270, 71, 35, 14);
+      bx_mem->box(FL_OFLAT_BOX);
+      bx_mem->color((Fl_Color)6);
+      bx_mem->labelfont(4);
+      bx_mem->labelsize(12);
+      bx_mem->align(Fl_Align(FL_ALIGN_INSIDE));
+    } // Fl_Box* bx_mem
+    { bx_hyp = new Fl_Box(190, 71, 35, 14);
+      bx_hyp->box(FL_OFLAT_BOX);
       bx_hyp->color((Fl_Color)6);
       bx_hyp->labelfont(4);
       bx_hyp->labelsize(12);
@@ -519,8 +575,9 @@ int main(int argc, char **argv) {
   menu_bar->color(FL_BACKGROUND2_COLOR);
   float lw = (float)i_varea->w();
   float fs = (float)i_varea->textsize();
-  int nrofdigits =  floor(1.6 * lw/fs);
+  int nrofdigits =  floor(1.6 * lw / fs);
   i_varea->value(calc.width(nrofdigits).c_str());
+  Fl::add_handler(missed_events);
   m_win->show(argc, argv);
   return Fl::run();
 }
@@ -561,7 +618,7 @@ Fl_Double_Window *a_diag=(Fl_Double_Window *)0;
 
 Fl_Group *a_mess=(Fl_Group *)0;
 
-void cb_open_about(int x, int y) {
+void cb_open_about() {
   { a_diag = new Fl_Double_Window(210, 165, "About");
     a_diag->color((Fl_Color)23);
     { a_mess = new Fl_Group(5, 10, 200, 45, "Calc 80");
@@ -571,11 +628,11 @@ void cb_open_about(int x, int y) {
       a_mess->align(Fl_Align(FL_ALIGN_CENTER));
       a_mess->end();
     } // Fl_Group* a_mess
-    { Fl_Group* o = new Fl_Group(5, 70, 205, 25, "Version 0.02");
+    { Fl_Group* o = new Fl_Group(5, 70, 205, 25, "Version 0.03");
       o->align(Fl_Align(FL_ALIGN_CENTER));
       o->end();
     } // Fl_Group* o
-    { Fl_Group* o = new Fl_Group(10, 95, 200, 25, "\302\251""2015, Patrik Wallander");
+    { Fl_Group* o = new Fl_Group(10, 95, 200, 25, "\302\251""2016, Patrik Wallander");
       o->align(Fl_Align(FL_ALIGN_CENTER));
       o->end();
     } // Fl_Group* o
@@ -585,7 +642,7 @@ void cb_open_about(int x, int y) {
       o->callback((Fl_Callback*)cb_close_about);
     } // Fl_Button* o
     a_diag->show();
-    a_diag->position(x,y);
+    a_diag->position(m_win->x(), m_win->y());
     a_diag->end();
   } // Fl_Double_Window* a_diag
 }

@@ -1,3 +1,3 @@
 # calc80
-Simple scientific calculator program <br>
+Simple scientific calculator<br>
 ![Screenshot](screenshot.png)

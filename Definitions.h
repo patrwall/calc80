@@ -92,7 +92,7 @@ const size_t LOW_PRIO = 2;
 const size_t MID_PRIO = 3;
 const size_t HIGH_PRIO = 4;
 const size_t HIGHER_PRIO = 5;
-const size_t HIGHEST_PRIO = 6; //
+const size_t HIGHEST_PRIO = 6;
 
 //
 //Special
@@ -103,7 +103,7 @@ const size_t S_TOGGLE_DRG = 129;
 //
 //Ignore
 //
-const size_t IGNORE = 245;
+//const size_t IGNORE = 245;
 
 //
 //Constants
