@@ -3,9 +3,13 @@
 #ifndef calc80_h
 #define calc80_h
 #include <FL/Fl.H>
+#include <FL/Fl.H>
+#include <FL/Fl_PNG_Image.H>
 #include "MyMenuBar.h"
 #include "Definitions.h"
 #include "Calculator.h"
+#include "win/resources.h"
+Fl_PNG_Image *w_icon = new Fl_PNG_Image("icon.png"); 
 MyMenuBar *menu_bar=(MyMenuBar *)0; 
 Calculator calc; 
 bool hyp = false; 

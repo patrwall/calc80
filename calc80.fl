@@ -8,7 +8,10 @@ decl {\#include <cstdlib>} {private global
 decl {\#include <string>} {private global
 } 
 
-decl {\#include <FL/Fl.H>} {private global
+decl {\#include <FL/Fl.H>} {public global
+} 
+
+decl {\#include <FL/Fl_PNG_Image.H>} {public global
 } 
 
 decl {\#include "MyMenuBar.h"} {public global
@@ -18,6 +21,22 @@ decl {\#include "Definitions.h"} {public global
 } 
 
 decl {\#include "Calculator.h"} {public global
+} 
+
+declblock {\#ifdef WIN32} {open after {\#endif /*WIN32*/}
+} {
+  decl {\#include <FL/x.H>} {private global
+  }
+  decl {\#include <windows.h>} {private global
+  }
+  decl {\#include "win/resources.h"} {public global
+  }
+} 
+
+declblock {\#ifdef __linux__} {open after {\#endif}
+} {
+  decl {Fl_PNG_Image *w_icon = new Fl_PNG_Image("icon.png");} {public global
+  }
 } 
 
 decl {MyMenuBar *menu_bar=(MyMenuBar *)0;} {public global
@@ -39,8 +58,7 @@ Function {missed_events(int event)} {open return_type int
     
     //printf("jollo%i\\n",Fl::event_key());
 return 0;
-}} {selected
-  }
+}} {}
 } 
 
 decl {Fl_Menu_Item menu_[] = {{"Archive", 0,  0, 0, 64, FL_NORMAL_LABEL, 0, 14, 0},
@@ -70,125 +88,125 @@ Function {} {open
 } {
   Fl_Window m_win {
     label Calc80 open
-    xywh {83 113 425 350} type Double color 23 labelfont 2 labelsize 11
+    xywh {1080 427 425 350} type Double color 29 labelfont 2 labelsize 11
     code0 {menu_bar = new MyMenuBar(0, 0, 425, 20);} size_range {425 285 0 0} visible
   } {
     Fl_Box {} {
-      xywh {5 25 415 60} box RFLAT_BOX color 231
+      xywh {5 25 415 60} box RFLAT_BOX color 206
     }
     Fl_Button {} {
       label 0
       user_data 0
       callback cb_all
-      xywh {245 297 55 47} box FLAT_BOX down_box FLAT_BOX color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {245 297 55 47} box FLAT_BOX down_box FLAT_BOX color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label {.}
       user_data 10
       callback cb_all
-      xywh {305 297 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x2c color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {305 297 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x2c color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label hyp
       user_data 1025
       callback cb_all
-      xywh {5 318 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x7a color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {5 318 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x7a color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label 1
       user_data 1
       callback cb_all
-      xywh {185 245 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x31 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {185 245 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x31 color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label 2
       user_data 2
       callback cb_all
-      xywh {245 245 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x32 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {245 245 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x32 color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label 3
       user_data 3
       callback cb_all
-      xywh {305 245 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x33 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {305 245 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x33 color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label {+}
       user_data 67
       callback cb_all
-      xywh {365 245 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x2b color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {365 245 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x2b color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label 4
       user_data 4
       callback cb_all
-      xywh {185 193 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x34 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {185 193 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x34 color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label 5
       user_data 5
       callback cb_all
-      xywh {245 193 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x35 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {245 193 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x35 color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label 6
       user_data 6
       callback cb_all
-      xywh {305 193 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x36 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {305 193 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x36 color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
-      label {−}
+      label {-}
       user_data 68
       callback cb_all
-      xywh {365 193 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x2d color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {365 193 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x2d color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label 7
       user_data 7
       callback cb_all
-      xywh {185 141 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x37 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {185 141 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x37 color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label 8
       user_data 8
       callback cb_all
-      xywh {245 141 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x38 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {245 141 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x38 color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label 9
       user_data 9
       callback cb_all
-      xywh {305 141 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x39 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {305 141 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x39 color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
-      label {×}
+      label x
       user_data 80
       callback cb_all
-      xywh {365 141 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x2a color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {365 141 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x2a color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label {%}
       user_data 75
       callback cb_all
-      xywh {185 297 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x25 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {185 297 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x25 color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label {(}
       user_data 65
       callback cb_all
-      xywh {245 89 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x28 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {245 89 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x28 color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label {)}
       user_data 66
       callback cb_all
-      xywh {305 89 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x29 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {305 89 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x29 color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
-      label {÷}
+      label {/}
       user_data 81
       callback cb_all
-      xywh {365 89 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x2f color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {365 89 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0x2f color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label DEL
@@ -206,180 +224,185 @@ Function {} {open
       label ln
       user_data 132
       callback cb_all
-      xywh {95 286 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x64 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {95 286 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x64 color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label {^}
       user_data 96
       callback cb_all
-      xywh {5 254 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x71 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {5 254 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x71 color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label log
       user_data 131
       callback cb_all
-      xywh {5 286 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x61 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {5 286 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x61 color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label {10^x}
       user_data 112
       callback cb_all
-      xywh {50 286 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x73 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {50 286 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x73 color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label EXP
       user_data 11
       callback cb_all
-      xywh {125 219 55 30} box FLAT_BOX down_box FLAT_BOX shortcut 0x6d color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {125 219 55 30} box FLAT_BOX down_box FLAT_BOX shortcut 0x6d color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label {e^x}
       user_data 113
       callback cb_all
-      xywh {140 286 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x66 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {140 286 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x66 color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
-      label {√}
+      label {√x}
       user_data 116
       callback cb_all
       xywh {5 219 55 30} box FLAT_BOX down_box FLAT_BOX shortcut 0x62 color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
-      label {+/−}
+      label {+/-}
       user_data 12
       callback cb_all
-      xywh {65 219 55 30} box FLAT_BOX down_box FLAT_BOX shortcut 0x6e color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {65 219 55 30} box FLAT_BOX down_box FLAT_BOX shortcut 0x6e color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
-      label {x²}
+      label {^2}
       user_data 115
       callback cb_all
-      xywh {95 254 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x65 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {95 254 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x65 color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label C
       user_data 14
       callback cb_all
-      xywh {95 119 85 25} box FLAT_BOX down_box FLAT_BOX shortcut 0x6c color 8 selection_color 17 labelfont 13 labelsize 15 labelcolor 7
+      xywh {95 119 85 25} box FLAT_BOX down_box FLAT_BOX shortcut 0x6c color 8 selection_color 17 labelsize 15 labelcolor 7
     }
     Fl_Button {} {
       label MR
       user_data 17
       callback cb_all
-      xywh {65 89 55 25} box FLAT_BOX down_box FLAT_BOX shortcut 0x6f color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {65 89 55 25} box FLAT_BOX down_box FLAT_BOX shortcut 0x6f color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label MS
       user_data 16
       callback cb_all
-      xywh {5 89 55 25} box FLAT_BOX down_box FLAT_BOX shortcut 0x69 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {5 89 55 25} box FLAT_BOX down_box FLAT_BOX shortcut 0x69 color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label {M+}
       user_data 18
       callback cb_all
-      xywh {125 89 55 25} box FLAT_BOX down_box FLAT_BOX shortcut 0x70 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {125 89 55 25} box FLAT_BOX down_box FLAT_BOX shortcut 0x70 color 7 selection_color 17 labelsize 15
     }
     Fl_Button b_ac {
       label AC
       user_data 15
       callback cb_all
-      xywh {5 119 85 25} box FLAT_BOX down_box FLAT_BOX shortcut 0x6b color 8 selection_color 17 labelfont 13 labelsize 15 labelcolor 7
+      xywh {5 119 85 25} box FLAT_BOX down_box FLAT_BOX shortcut 0x6b color 8 selection_color 17 labelsize 15 labelcolor 7
     }
     Fl_Button {} {
       label asin
       user_data 122
       callback cb_all
-      xywh {5 184 55 30} box FLAT_BOX down_box FLAT_BOX shortcut 0x67 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {5 184 55 30} box FLAT_BOX down_box FLAT_BOX shortcut 0x67 color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label acos
       user_data 123
       callback cb_all
-      xywh {65 184 55 30} box FLAT_BOX down_box FLAT_BOX shortcut 0x68 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {65 184 55 30} box FLAT_BOX down_box FLAT_BOX shortcut 0x68 color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label atan
       user_data 124
       callback cb_all
-      xywh {125 184 55 30} box FLAT_BOX down_box FLAT_BOX shortcut 0x6a color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {125 184 55 30} box FLAT_BOX down_box FLAT_BOX shortcut 0x6a color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label sin
       user_data 119
       callback cb_all
-      xywh {5 149 55 30} box FLAT_BOX down_box FLAT_BOX shortcut 0x74 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {5 149 55 30} box FLAT_BOX down_box FLAT_BOX shortcut 0x74 color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label cos
       user_data 120
       callback cb_all
-      xywh {65 149 55 30} box FLAT_BOX down_box FLAT_BOX shortcut 0x79 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {65 149 55 30} box FLAT_BOX down_box FLAT_BOX shortcut 0x79 color 7 selection_color 17 labelsize 15
     }
     Fl_Button b_equal {
       label {=}
       user_data 64
       callback cb_all
-      xywh {365 297 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0xff0d color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {365 297 55 47} box FLAT_BOX down_box FLAT_BOX shortcut 0xff0d color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label tan
       user_data 121
       callback cb_all
-      xywh {125 149 55 30} box FLAT_BOX down_box FLAT_BOX shortcut 0x75 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {125 149 55 30} box FLAT_BOX down_box FLAT_BOX shortcut 0x75 color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label {x!}
       user_data 118
       callback cb_all
-      xywh {50 318 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x78 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {50 318 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x78 color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
-      label {y¹⁄x}
+      label {y√x}
       user_data 97
       callback cb_all
-      xywh {95 318 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x63 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {95 318 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x63 color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
       label {1/x}
       user_data 117
       callback cb_all
-      xywh {140 254 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x72 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {140 254 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x72 color 7 selection_color 17 labelsize 15
     }
     Fl_Button {} {
-      label {³√}
+      label {3√x}
       user_data 133
       callback cb_all
-      xywh {140 318 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x76 color 7 selection_color 17 labelfont 13 labelsize 15
+      xywh {140 318 40 26} box FLAT_BOX down_box FLAT_BOX shortcut 0x76 color 7 selection_color 17 labelsize 15
     }
     Fl_Input i_varea {
-      xywh {5 24 415 44} box RFLAT_BOX color 6 labelfont 4
-      code0 {i_varea->textfont(FL_COURIER);}
+      xywh {5 26 415 42} box RFLAT_BOX color 206 labelfont 4
+      code0 {i_varea->textfont(FL_COURIER_ITALIC);}
       code1 {i_varea->textsize(30);}
     }
     Fl_Box bx_brackets {
-      xywh {350 71 50 14} box OFLAT_BOX color 6 labelfont 4 labelsize 12
+      xywh {350 71 50 14} color 206 labelfont 4 labelsize 12
       code0 {bx_brackets->align(Fl_Align(FL_ALIGN_INSIDE));}
     }
     Fl_Box bx_fmod {
-      xywh {310 71 35 14} box OFLAT_BOX color 6 labelfont 4 labelsize 12
+      xywh {310 71 35 14} color 206 labelfont 4 labelsize 12
       code0 {bx_fmod->align(Fl_Align(FL_ALIGN_INSIDE));}
     }
     Fl_Box bx_tmod {
       label DEG
-      xywh {230 71 35 14} box OFLAT_BOX color 6 labelfont 4 labelsize 12
+      xywh {230 71 35 14} color 206 labelfont 4 labelsize 12
       code0 {bx_tmod->align(Fl_Align(FL_ALIGN_INSIDE));}
     }
     Fl_Box bx_mem {
-      xywh {270 71 35 14} box OFLAT_BOX color 6 labelfont 4 labelsize 12
+      xywh {270 71 35 14} color 206 labelfont 4 labelsize 12
       code0 {bx_mem->align(Fl_Align(FL_ALIGN_INSIDE));}
     }
     Fl_Box bx_hyp {
-      xywh {190 71 35 14} box OFLAT_BOX color 6 labelfont 4 labelsize 12
+      xywh {190 71 35 14} color 206 labelfont 4 labelsize 12
       code0 {bx_hyp->align(Fl_Align(FL_ALIGN_INSIDE));}
     }
   }
-  code {menu_bar->menu(menu_);
+  code {\#ifdef __linux__
+m_win->icon((Fl_RGB_Image*) w_icon);
+\#elif defined WIN32
+m_win->icon((char*)LoadIcon(fl_display, MAKEINTRESOURCE(IDI_ICON)));
+\#endif
+menu_bar->menu(menu_);
 menu_bar->box(FL_FLAT_BOX);
 menu_bar->down_box(FL_FLAT_BOX);
 menu_bar->color(FL_BACKGROUND2_COLOR);
@@ -428,16 +451,16 @@ Function {cb_open_about()} {open return_type void
 } {
   Fl_Window a_diag {
     label About open
-    xywh {1065 847 210 165} type Double color 23
+    xywh {1535 221 210 165} type Double color 29
     code0 {a_diag->show();}
     code1 {a_diag->position(m_win->x(), m_win->y());} visible
   } {
     Fl_Group a_mess {
       label {Calc 80} open
-      xywh {5 10 200 45} box OFLAT_BOX color 6 labelsize 21 align 0
+      xywh {5 10 200 45} box RFLAT_BOX color 206 labelsize 21 align 0
     } {}
     Fl_Group {} {
-      label {Version 0.03}
+      label {Version 0.04} selected
       xywh {5 70 205 25} align 0
     } {}
     Fl_Group {} {

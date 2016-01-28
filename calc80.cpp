@@ -3,7 +3,12 @@
 #include "calc80.h"
 #include <cstdlib>
 #include <string>
-#include <FL/Fl.H>
+#ifdef WIN32
+#include <FL/x.H>
+#include <windows.h>
+#endif /*WIN32*/
+#ifdef __linux__
+#endif
 
 int missed_events(int event) {
   if(event == FL_SHORTCUT) {
@@ -58,19 +63,18 @@ Fl_Box *bx_hyp=(Fl_Box *)0;
 
 int main(int argc, char **argv) {
   { m_win = new Fl_Double_Window(425, 350, "Calc80");
-    m_win->color((Fl_Color)23);
+    m_win->color((Fl_Color)29);
     m_win->labelfont(2);
     m_win->labelsize(11);
     { Fl_Box* o = new Fl_Box(5, 25, 415, 60);
       o->box(FL_RFLAT_BOX);
-      o->color((Fl_Color)231);
+      o->color((Fl_Color)206);
     } // Fl_Box* o
     { Fl_Button* o = new Fl_Button(245, 297, 55, 47, "0");
       o->box(FL_FLAT_BOX);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(0));
     } // Fl_Button* o
@@ -80,7 +84,6 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(10));
     } // Fl_Button* o
@@ -90,7 +93,6 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(1025));
     } // Fl_Button* o
@@ -100,7 +102,6 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(1));
     } // Fl_Button* o
@@ -110,7 +111,6 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(2));
     } // Fl_Button* o
@@ -120,7 +120,6 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(3));
     } // Fl_Button* o
@@ -130,7 +129,6 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(67));
     } // Fl_Button* o
@@ -140,7 +138,6 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(4));
     } // Fl_Button* o
@@ -150,7 +147,6 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(5));
     } // Fl_Button* o
@@ -160,17 +156,15 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(6));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(365, 193, 55, 47, "\342\210\222");
+    { Fl_Button* o = new Fl_Button(365, 193, 55, 47, "-");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x2d);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(68));
     } // Fl_Button* o
@@ -180,7 +174,6 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(7));
     } // Fl_Button* o
@@ -190,7 +183,6 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(8));
     } // Fl_Button* o
@@ -200,17 +192,15 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(9));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(365, 141, 55, 47, "\303\227");
+    { Fl_Button* o = new Fl_Button(365, 141, 55, 47, "x");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x2a);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(80));
     } // Fl_Button* o
@@ -220,7 +210,6 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(75));
     } // Fl_Button* o
@@ -230,7 +219,6 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(65));
     } // Fl_Button* o
@@ -240,17 +228,15 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(66));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(365, 89, 55, 47, "\303\267");
+    { Fl_Button* o = new Fl_Button(365, 89, 55, 47, "/");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x2f);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(81));
     } // Fl_Button* o
@@ -278,7 +264,6 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(132));
     } // Fl_Button* o
@@ -288,7 +273,6 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(96));
     } // Fl_Button* o
@@ -298,7 +282,6 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(131));
     } // Fl_Button* o
@@ -308,7 +291,6 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(112));
     } // Fl_Button* o
@@ -318,7 +300,6 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(11));
     } // Fl_Button* o
@@ -328,11 +309,10 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(113));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(5, 219, 55, 30, "\342\210\232");
+    { Fl_Button* o = new Fl_Button(5, 219, 55, 30, "\342\210\232x");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x62);
       o->down_box(FL_FLAT_BOX);
@@ -341,23 +321,21 @@ int main(int argc, char **argv) {
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(116));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(65, 219, 55, 30, "+/\342\210\222");
+    { Fl_Button* o = new Fl_Button(65, 219, 55, 30, "+/-");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x6e);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(12));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(95, 254, 40, 26, "x\302\262");
+    { Fl_Button* o = new Fl_Button(95, 254, 40, 26, "^2");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x65);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(115));
     } // Fl_Button* o
@@ -367,7 +345,6 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_INACTIVE_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->labelcolor(FL_BACKGROUND2_COLOR);
       o->callback((Fl_Callback*)cb_all, (void*)(14));
@@ -378,7 +355,6 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(17));
     } // Fl_Button* o
@@ -388,7 +364,6 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(16));
     } // Fl_Button* o
@@ -398,7 +373,6 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(18));
     } // Fl_Button* o
@@ -408,7 +382,6 @@ int main(int argc, char **argv) {
       b_ac->down_box(FL_FLAT_BOX);
       b_ac->color(FL_INACTIVE_COLOR);
       b_ac->selection_color((Fl_Color)17);
-      b_ac->labelfont(13);
       b_ac->labelsize(15);
       b_ac->labelcolor(FL_BACKGROUND2_COLOR);
       b_ac->callback((Fl_Callback*)cb_all, (void*)(15));
@@ -419,7 +392,6 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(122));
     } // Fl_Button* o
@@ -429,7 +401,6 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(123));
     } // Fl_Button* o
@@ -439,7 +410,6 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(124));
     } // Fl_Button* o
@@ -449,7 +419,6 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(119));
     } // Fl_Button* o
@@ -459,7 +428,6 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(120));
     } // Fl_Button* o
@@ -469,7 +437,6 @@ int main(int argc, char **argv) {
       b_equal->down_box(FL_FLAT_BOX);
       b_equal->color(FL_BACKGROUND2_COLOR);
       b_equal->selection_color((Fl_Color)17);
-      b_equal->labelfont(13);
       b_equal->labelsize(15);
       b_equal->callback((Fl_Callback*)cb_all, (void*)(64));
     } // Fl_Button* b_equal
@@ -479,7 +446,6 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(121));
     } // Fl_Button* o
@@ -489,17 +455,15 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(118));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(95, 318, 40, 26, "y\302\271\342\201\204x");
+    { Fl_Button* o = new Fl_Button(95, 318, 40, 26, "y\342\210\232x");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x63);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(97));
     } // Fl_Button* o
@@ -509,58 +473,51 @@ int main(int argc, char **argv) {
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(117));
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(140, 318, 40, 26, "\302\263\342\210\232");
+    { Fl_Button* o = new Fl_Button(140, 318, 40, 26, "3\342\210\232x");
       o->box(FL_FLAT_BOX);
       o->shortcut(0x76);
       o->down_box(FL_FLAT_BOX);
       o->color(FL_BACKGROUND2_COLOR);
       o->selection_color((Fl_Color)17);
-      o->labelfont(13);
       o->labelsize(15);
       o->callback((Fl_Callback*)cb_all, (void*)(133));
     } // Fl_Button* o
-    { i_varea = new Fl_Input(5, 24, 415, 44);
+    { i_varea = new Fl_Input(5, 26, 415, 42);
       i_varea->box(FL_RFLAT_BOX);
-      i_varea->color((Fl_Color)6);
+      i_varea->color((Fl_Color)206);
       i_varea->labelfont(4);
-      i_varea->textfont(FL_COURIER);
+      i_varea->textfont(FL_COURIER_ITALIC);
       i_varea->textsize(30);
     } // Fl_Input* i_varea
     { bx_brackets = new Fl_Box(350, 71, 50, 14);
-      bx_brackets->box(FL_OFLAT_BOX);
-      bx_brackets->color((Fl_Color)6);
+      bx_brackets->color((Fl_Color)206);
       bx_brackets->labelfont(4);
       bx_brackets->labelsize(12);
       bx_brackets->align(Fl_Align(FL_ALIGN_INSIDE));
     } // Fl_Box* bx_brackets
     { bx_fmod = new Fl_Box(310, 71, 35, 14);
-      bx_fmod->box(FL_OFLAT_BOX);
-      bx_fmod->color((Fl_Color)6);
+      bx_fmod->color((Fl_Color)206);
       bx_fmod->labelfont(4);
       bx_fmod->labelsize(12);
       bx_fmod->align(Fl_Align(FL_ALIGN_INSIDE));
     } // Fl_Box* bx_fmod
     { bx_tmod = new Fl_Box(230, 71, 35, 14, "DEG");
-      bx_tmod->box(FL_OFLAT_BOX);
-      bx_tmod->color((Fl_Color)6);
+      bx_tmod->color((Fl_Color)206);
       bx_tmod->labelfont(4);
       bx_tmod->labelsize(12);
       bx_tmod->align(Fl_Align(FL_ALIGN_INSIDE));
     } // Fl_Box* bx_tmod
     { bx_mem = new Fl_Box(270, 71, 35, 14);
-      bx_mem->box(FL_OFLAT_BOX);
-      bx_mem->color((Fl_Color)6);
+      bx_mem->color((Fl_Color)206);
       bx_mem->labelfont(4);
       bx_mem->labelsize(12);
       bx_mem->align(Fl_Align(FL_ALIGN_INSIDE));
     } // Fl_Box* bx_mem
     { bx_hyp = new Fl_Box(190, 71, 35, 14);
-      bx_hyp->box(FL_OFLAT_BOX);
-      bx_hyp->color((Fl_Color)6);
+      bx_hyp->color((Fl_Color)206);
       bx_hyp->labelfont(4);
       bx_hyp->labelsize(12);
       bx_hyp->align(Fl_Align(FL_ALIGN_INSIDE));
@@ -569,6 +526,11 @@ int main(int argc, char **argv) {
     m_win->size_range(425, 285);
     m_win->end();
   } // Fl_Double_Window* m_win
+  #ifdef __linux__
+  m_win->icon((Fl_RGB_Image*) w_icon);
+  #elif defined WIN32
+  m_win->icon((char*)LoadIcon(fl_display, MAKEINTRESOURCE(IDI_ICON)));
+  #endif
   menu_bar->menu(menu_);
   menu_bar->box(FL_FLAT_BOX);
   menu_bar->down_box(FL_FLAT_BOX);
@@ -620,15 +582,15 @@ Fl_Group *a_mess=(Fl_Group *)0;
 
 void cb_open_about() {
   { a_diag = new Fl_Double_Window(210, 165, "About");
-    a_diag->color((Fl_Color)23);
+    a_diag->color((Fl_Color)29);
     { a_mess = new Fl_Group(5, 10, 200, 45, "Calc 80");
-      a_mess->box(FL_OFLAT_BOX);
-      a_mess->color((Fl_Color)6);
+      a_mess->box(FL_RFLAT_BOX);
+      a_mess->color((Fl_Color)206);
       a_mess->labelsize(21);
       a_mess->align(Fl_Align(FL_ALIGN_CENTER));
       a_mess->end();
     } // Fl_Group* a_mess
-    { Fl_Group* o = new Fl_Group(5, 70, 205, 25, "Version 0.03");
+    { Fl_Group* o = new Fl_Group(5, 70, 205, 25, "Version 0.04");
       o->align(Fl_Align(FL_ALIGN_CENTER));
       o->end();
     } // Fl_Group* o

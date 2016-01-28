@@ -59,6 +59,7 @@ const size_t OP_POWER =96;	//HIGHER PRIO
 const size_t OP_IPOW = 97;
 const size_t OP_XROOT = 98;
 
+
 const size_t OP_TENPOW = 112;  //HIGHEST PRIO
 const size_t OP_EPOW = 113;
 const size_t OP_PERCENT = 114;	

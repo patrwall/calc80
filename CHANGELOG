@@ -1,3 +1,4 @@
-0.3	Different GUI layout, R. Alt activates menu, '=' and Enter shortcuts for equal, Cross compile to $indows,  Changed characters as som was'nt available to wine.
-0.2	Left Alt key activate menu
-0.1	First release	2015-01-10
+0.04	Different colors, italic font in view, characters was changed to work in windows, icon for Linux and windows, Alt_L activates menu.
+0.03	Different GUI layout, R. Alt activates menu, '=' and Enter shortcuts for equal, Cross compile to $indows,  Changed characters as som was'nt available to wine.
+0.02	Left Alt key activate menu
+0.01	First release	2015-01-10
